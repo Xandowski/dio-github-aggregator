@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import GithubLogo from './assets/images/github-logo.svg'
 import { Card } from './components/Card'
 import { api } from './services/api'
@@ -15,11 +15,11 @@ interface repo {
 
 
 export const App = () => {
-  const [repos, setRepos] = useState([])
+  const [repos, setRepos] = useState<repo[]>([])
   const [inputValue, setInputValue] = useState('')
 
-  const handleChange = e => {
-    setInputValue(e.target.value)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue((e.target as HTMLInputElement).value)
   }
 
   const handleSearch = async () => {
